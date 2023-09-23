@@ -1,10 +1,10 @@
 {
-	"id": "obsidian-qiniu-image-uploader",
+	"id": "qiniu-image-uploader",
 	"name": "Qiniu Image Uploader",
 	"version": "1.0.0",
 	"minAppVersion": "0.15.0",
 	"description": "Uploads images from your clipboard to qiniu.com and embeds uploaded image to your note.",
 	"author": "Jade Zheng",
-	"authorUrl": "https://github.com/jianzs/obsidian-qiniu-image-uploader",
+	"authorUrl": "https://github.com/jianzs",
 	"isDesktopOnly": false
 }
