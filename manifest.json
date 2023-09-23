@@ -1,11 +1,10 @@
 {
-	"id": "sample-plugin",
-	"name": "Sample Plugin",
+	"id": "obsidian-qiniu-image-uploader",
+	"name": "Qiniu Image Uploader",
 	"version": "1.0.0",
 	"minAppVersion": "0.15.0",
-	"description": "This is a sample plugin for Obsidian. This plugin demonstrates some of the capabilities of the Obsidian API.",
-	"author": "Obsidian",
-	"authorUrl": "https://obsidian.md",
-	"fundingUrl": "https://obsidian.md/pricing",
+	"description": "Uploads images from your clipboard to qiniu.com and embeds uploaded image to your note.",
+	"author": "Jade Zheng",
+	"authorUrl": "https://github.com/jianzs/obsidian-qiniu-image-uploader",
 	"isDesktopOnly": false
 }
