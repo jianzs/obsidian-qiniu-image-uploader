@@ -8,6 +8,7 @@ export interface PluginSettings {
     bucketName: string;
     domain: string;
     namePrefix: string;
+    region: string;
     deleteSource: boolean;
 }
 
@@ -17,6 +18,7 @@ export const DEFAULT_SETTINGS: PluginSettings = {
     bucketName: "",
     domain: "",
     namePrefix: "ob-",
+    region: "z1",
     deleteSource: false,
 };
 
@@ -65,6 +67,22 @@ export class SettingTab extends PluginSettingTab {
                     this.plugin.settings.bucketName = value;
                     await this.plugin.saveSettings();
                 }));
+
+        new Setting(containerEl)
+            .setName(t("Region"))
+            .setDesc(t("Region Desc"))
+            .addDropdown((dropDown) => {
+                dropDown.addOption("z1", t("North China - Hebei"));
+                dropDown.addOption("z0", t("East China - Zhejiang"));
+                dropDown.addOption("cn-east-2", t("East China - Zhejiang 2"));
+                dropDown.addOption("z2", t("South China - Guangdong"));
+                dropDown.addOption("na0", t("North America - Los Angeles"));
+                dropDown.addOption("as0", t("Asia Pacific - Singapore (formerly Southeast Asia)"));
+                dropDown.onChange(async (value) => {
+                    this.plugin.settings.region = value;
+                    await this.plugin.saveSettings();
+                });
+            });
 
         new Setting(containerEl)
             .setName(t("Domain"))

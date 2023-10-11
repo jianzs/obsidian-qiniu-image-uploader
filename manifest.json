@@ -1,7 +1,7 @@
 {
 	"id": "qiniu-image-uploader",
 	"name": "Qiniu Image Uploader",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"minAppVersion": "0.15.0",
 	"description": "Uploads images from your clipboard to qiniu.com and embeds uploaded image to your note.",
 	"author": "Jade Zheng",

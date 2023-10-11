@@ -2,6 +2,15 @@ import { PluginSettings } from "../settings";
 import * as qiniu from 'qiniu';
 import { Uploader } from "./uploader";
 
+const zoneMapping: { [key: string]: qiniu.conf.Zone } = {
+    "as0": qiniu.zone.Zone_as0,
+    "cn_east_2": qiniu.zone.Zone_cn_east_2,
+    "na0": qiniu.zone.Zone_na0,
+    "z0": qiniu.zone.Zone_z0,
+    "z1": qiniu.zone.Zone_z1,
+    "z2": qiniu.zone.Zone_z2,
+}
+
 export class QiniuUploader implements Uploader {
     settings: PluginSettings;
 
@@ -19,7 +28,7 @@ export class QiniuUploader implements Uploader {
 
     public async uploadFile(name: string, file: File): Promise<string> {
         var config = new qiniu.conf.Config({
-            zone: qiniu.zone.Zone_z0,
+            zone: zoneMapping[this.settings.region]
         });
 
         var formUploader = new qiniu.form_up.FormUploader(config);
