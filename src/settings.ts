@@ -1,4 +1,4 @@
-import { App, PluginSettingTab, Setting } from "obsidian";
+import { App, PluginSettingTab, Setting, Notice } from "obsidian";
 import QiniuImageUploader from "./main";
 import { t } from "./lang/helpers";
 
@@ -68,21 +68,33 @@ export class SettingTab extends PluginSettingTab {
                     await this.plugin.saveSettings();
                 }));
 
+        const regionMapping: { [key: string]: string } = {
+            "z1": t("North China - Hebei"),
+            "z0": t("East China - Zhejiang"),
+            "cn-east-2": t("East China - Zhejiang 2"),
+            "z2": t("South China - Guangdong"),
+            "na0": t("North America - Los Angeles"),
+            "as0": t("Asia Pacific - Singapore (formerly Southeast Asia)"),
+        };
+
         new Setting(containerEl)
             .setName(t("Region"))
             .setDesc(t("Region Desc"))
-            .addDropdown((dropDown) => {
-                dropDown.addOption("z1", t("North China - Hebei"));
-                dropDown.addOption("z0", t("East China - Zhejiang"));
-                dropDown.addOption("cn-east-2", t("East China - Zhejiang 2"));
-                dropDown.addOption("z2", t("South China - Guangdong"));
-                dropDown.addOption("na0", t("North America - Los Angeles"));
-                dropDown.addOption("as0", t("Asia Pacific - Singapore (formerly Southeast Asia)"));
-                dropDown.onChange(async (value) => {
+            .addDropdown(dropDown => dropDown
+                .addOption("z1", t("North China - Hebei"))
+                .addOption("z0", t("East China - Zhejiang"))
+                .addOption("cn-east-2", t("East China - Zhejiang 2"))
+                .addOption("z2", t("South China - Guangdong"))
+                .addOption("na0", t("North America - Los Angeles"))
+                .addOption("as0", t("Asia Pacific - Singapore (formerly Southeast Asia)"))
+                .setValue(this.plugin.settings.region)
+                .onChange(async (value) => {
                     this.plugin.settings.region = value;
                     await this.plugin.saveSettings();
-                });
-            });
+                    const fiveSecondsMillis = 5_000
+                    new Notice("修改地区为 " + regionMapping[value], fiveSecondsMillis)
+                })
+            );
 
         new Setting(containerEl)
             .setName(t("Domain"))
