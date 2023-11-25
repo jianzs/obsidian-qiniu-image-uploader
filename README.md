@@ -1,5 +1,7 @@
 # Obisidian Qiniu Image Uploader
 
+![GitHub release (latest by SemVer including pre-releases)](https://img.shields.io/github/downloads-pre/jianzs/obsidian-qiniu-image-uploader/latest/total?style=flat-square)
+
 This is a plugin for [Obsidian](https://obsidian.md). It was generated based on the [standard plugin template](https://github.com/obsidianmd/obsidian-sample-plugin).
 
 This project implements an image uploader, that uploads the images to [Qiniu Cloud](https://www.qiniu.com/) instead of storing them locally in your vault.
