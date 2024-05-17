@@ -106,7 +106,7 @@ export class SettingTab extends PluginSettingTab {
                 .addOption("No", t("NO"))
                 .setValue(this.plugin.settings.https)
                 .onChange(async (value) => {
-                    this.plugin.settings.region = value;
+                    this.plugin.settings.https = value;
                     await this.plugin.saveSettings();
                     const fiveSecondsMillis = 5_000;
                     if (value === "Yes") {
