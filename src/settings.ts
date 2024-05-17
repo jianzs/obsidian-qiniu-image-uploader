@@ -6,6 +6,7 @@ export interface PluginSettings {
     accessKey: string;
     accessSecretKey: string;
     bucketName: string;
+    https: string;
     domain: string;
     namePrefix: string;
     region: string;
@@ -16,6 +17,7 @@ export const DEFAULT_SETTINGS: PluginSettings = {
     accessKey: "",
     accessSecretKey: "",
     bucketName: "",
+    https: "No",
     domain: "",
     namePrefix: "ob-",
     region: "z1",
@@ -93,6 +95,25 @@ export class SettingTab extends PluginSettingTab {
                     await this.plugin.saveSettings();
                     const fiveSecondsMillis = 5_000
                     new Notice("修改地区为 " + regionMapping[value], fiveSecondsMillis)
+                })
+            );
+
+        new Setting(containerEl)
+            .setName(t("HTTPS"))
+            .setDesc(t("HTTPS Desc"))
+            .addDropdown(dropDown => dropDown
+                .addOption("Yes", t("YES"))
+                .addOption("No", t("NO"))
+                .setValue(this.plugin.settings.https)
+                .onChange(async (value) => {
+                    this.plugin.settings.region = value;
+                    await this.plugin.saveSettings();
+                    const fiveSecondsMillis = 5_000;
+                    if (value === "Yes") {
+                        new Notice("修改为 HTTPS", fiveSecondsMillis)
+                    } else {
+                        new Notice("修改为 HTTP", fiveSecondsMillis)
+                    }
                 })
             );
 

@@ -31,4 +31,8 @@ export default {
   "South China - Guangdong": "South China - Guangdong",
   "North America - Los Angeles": "North America - Los Angeles",
   "Asia Pacific - Singapore (formerly Southeast Asia)": "Asia Pacific - Singapore (formerly Southeast Asia)",
+  "HTTPS": "HTTPS",
+  "HTTPS Desc": "Whether to use HTTPS protocol",
+  "YES": "Yes",
+  "NO": "No",
 };

@@ -69,7 +69,9 @@ export default class QiniuImageUploader extends Plugin {
         const fileName = this.genImageName(uploadFile);
         await this.uploader!.uploadFile(fileName, uploadFile);
 
-        const imageUrl = `http://${this.settings.domain}/${fileName}`;
+        const schema = this.settings.https === 'Yes' ? 'https' : 'http';
+
+        const imageUrl = `${schema}://${this.settings.domain}/${fileName}`;
         const markDownImage = `![](${imageUrl})`
         QiniuImageUploader.replaceFirstOccurrence(editor, progressText, markDownImage)
     }
