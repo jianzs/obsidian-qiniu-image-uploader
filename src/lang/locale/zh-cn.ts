@@ -22,6 +22,10 @@ export default {
   "Name Prefix Desc": "配置上传文件的前缀，文件名将为：前缀{{timestamp}}",
   "Name Prefix Input": "上传后的文件前缀",
 
+  "Time Format": "时间格式",
+  "Time Format Desc": "配置文件名中时间的格式，默认为时间戳格式，可按[文档](https://github.com/date-fns/date-fns/blob/main/docs/unicodeTokens.md)配置，例如：yyMMdd-HHmmss",
+  "Time Format Input": "时间格式",
+
   "Region": "区域",
   "Region Desc": "指明桶所在的区域",
 

@@ -1,3 +1,4 @@
+import { format } from 'date-fns';
 import { Editor, Notice, Plugin } from 'obsidian';
 import { DEFAULT_SETTINGS, PluginSettings, SettingTab } from './settings';
 import { Uploader, buildUploaderFrom } from './uploader/uploader';
@@ -83,7 +84,12 @@ export default class QiniuImageUploader extends Plugin {
     private genImageName(image: File) {
         const parts = image.type.split('/');
         const type = parts[parts.length - 1];
-        return `${this.settings.namePrefix}${Date.now()}.${type}`;
+
+        const timestr = this.settings.timeFormat === '' 
+            ? Date.now().toString() 
+            : format(new Date(), this.settings.timeFormat);
+
+        return `${this.settings.namePrefix}${timestr}.${type}`;
     }
 
     async loadSettings() {

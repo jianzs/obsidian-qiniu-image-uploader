@@ -9,6 +9,7 @@ export interface PluginSettings {
     https: string;
     domain: string;
     namePrefix: string;
+    timeFormat: string;
     region: string;
     deleteSource: boolean;
 }
@@ -20,6 +21,7 @@ export const DEFAULT_SETTINGS: PluginSettings = {
     https: "No",
     domain: "",
     namePrefix: "ob-",
+    timeFormat: "",
     region: "z1",
     deleteSource: false,
 };
@@ -134,6 +136,17 @@ export class SettingTab extends PluginSettingTab {
             .addText(text => text
                 .setPlaceholder(t("Name Prefix Input"))
                 .setValue(this.plugin.settings.namePrefix)
+                .onChange(async (value) => {
+                    this.plugin.settings.namePrefix = value;
+                    await this.plugin.saveSettings();
+                }));
+
+        new Setting(containerEl)
+            .setName(t("Time Format"))
+            .setDesc(t("Time Format Desc"))
+            .addText(text => text
+                .setPlaceholder(t("Time Format Input"))
+                .setValue(this.plugin.settings.timeFormat)
                 .onChange(async (value) => {
                     this.plugin.settings.namePrefix = value;
                     await this.plugin.saveSettings();

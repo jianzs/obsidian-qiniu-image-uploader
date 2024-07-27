@@ -22,6 +22,10 @@ export default {
   "Name Prefix Desc": "The uploaded filename's prefix in Qiniu, the uploaded filename will be: {{prefix}}{{timestamp}}.",
   "Name Prefix Input": "The image's prefix",
 
+  "Time Format": "Time format",
+  "Time Format Desc": "The time format in the configuration file name, the default is the timestamp format, and you can configure the format according to the [document](https://github.com/date-fns/date-fns/blob/main/docs/unicodeTokens.md), for example: yyMMdd-HHmmss.",
+  "Time Format Input": "Time format",
+
   "Region": "Region",
   "Region Desc": "The region in which the bucket is located.",
 

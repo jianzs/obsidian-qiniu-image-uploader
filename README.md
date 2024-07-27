@@ -20,7 +20,7 @@ To obtain the `AccessKey` and `AccessSecretKey`, you can fetch them from the key
 
 ### Plugin configuration in Obsidian
 
-All setting items are required, except for the the `Name Prefix`.
+All setting items are required, except for the the `Name Prefix` and `Time Format` which are optional.
 
 ## Thanks
 
