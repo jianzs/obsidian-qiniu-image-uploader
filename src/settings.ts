@@ -148,7 +148,7 @@ export class SettingTab extends PluginSettingTab {
                 .setPlaceholder(t("Time Format Input"))
                 .setValue(this.plugin.settings.timeFormat)
                 .onChange(async (value) => {
-                    this.plugin.settings.namePrefix = value;
+                    this.plugin.settings.timeFormat = value;
                     await this.plugin.saveSettings();
                 }));
     }
